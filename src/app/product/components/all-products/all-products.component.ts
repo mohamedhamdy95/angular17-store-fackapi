@@ -41,9 +41,12 @@ export class AllProductsComponent implements OnInit{
 
   filterCategory(event:any){
     let cateValue = event.target.value
-    this.getOneCategories(cateValue)
+    if(cateValue == "all"){
+      this.getProducts()
+    }else{
+      this.getOneCategories(cateValue)
+    }
   }
-
   
   getOneCategories(word:any){
     this.service.getSpecificCategories(word).subscribe({
