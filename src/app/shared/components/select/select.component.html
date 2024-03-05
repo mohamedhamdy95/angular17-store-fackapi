@@ -1,0 +1,7 @@
+<label for="">{{title}} :</label> 
+<select class="form-select form-select-sm w-25 mt-2 mb-5 p-2" (change)="filterFunc($event)" aria-label="Small select example">
+  <option value="all" selected>All Categorirs</option>
+  @for (item of data; track $index) {
+    <option [value]="item">{{item}}</option>
+  } 
+  </select>

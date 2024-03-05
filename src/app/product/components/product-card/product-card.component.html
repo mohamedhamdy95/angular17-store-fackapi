@@ -1,0 +1,11 @@
+<div class="card shadow-lg" style="width: 18rem;">
+    <img [src]='data.image' class="card-img-top" [alt]="data.title">
+    <div class="card-body">
+      <h5 class="card-title">{{data.title}}</h5>
+      <p class="card-text">{{data.description}}</p>
+      <div class="d-flex align-items-center justify-content-between">
+        <a  class="btn btn-primary" (click)="addToCart()">Add to cart</a>
+        <span>{{data.price}} EGP</span>
+      </div>
+    </div>
+  </div>
