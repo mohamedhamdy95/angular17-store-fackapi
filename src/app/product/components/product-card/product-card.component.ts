@@ -9,9 +9,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class ProductCardComponent {
   @Input() data:any={}
-  @Output() item = new EventEmitter();
+  @Output() clickedItem = new EventEmitter()
   constructor(){}
-  addToCart(){
-    this.item.emit(this.data)
+  addItemToCart(){
+    this.clickedItem.emit(this.data)
   }
 }

@@ -15,6 +15,7 @@ export class AllProductsComponent implements OnInit{
   constructor(private service:ProductService){}
   productsList:any[]=[]
   categoriesList:any[]=[]
+  cartProductList:any[]=[];
   ngOnInit(): void {
     this.getProducts()
     this.getCategories()
@@ -40,11 +41,12 @@ export class AllProductsComponent implements OnInit{
     }
   }
 
-    
+
   getOneCategories(word:any){
     this.service.getSpecificCategories(word).subscribe({
       next:(res)=>{
         this.productsList=res
+
       }
     })
 }
@@ -60,9 +62,19 @@ export class AllProductsComponent implements OnInit{
     })
   }
 
+  addClickedItemToCart(event:any){
 
-  addToCart(event:any){
-    console.log(event)
+    if('cart' in localStorage){
+      this.cartProductList = JSON.parse(localStorage.getItem('cart')!)
+      let exist = this.cartProductList.find(item => item.id === event.id)
+      if(exist){
+        alert("This Item Added Before")
+      }else{
+        this.cartProductList.push(event)
+        localStorage.setItem('cart',JSON.stringify(this.cartProductList))
+      }
+    }else{
+      this.cartProductList.push(event)
+      localStorage.setItem('cart',JSON.stringify(this.cartProductList))    }
   }
-
 }

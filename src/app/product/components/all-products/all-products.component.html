@@ -1,10 +1,17 @@
 <section>
-<app-select [data]="categoriesList" [title] = "'Categories'" (selecedData) ="filterCategory($event)" ></app-select>
-    <div class="row gy-4">
-        @for (item of productsList; track item.id) {
-            <div class="col-md-3 ">
-              <app-product-card [data]="item" (item)="addToCart($event)"></app-product-card>
-            </div>
-          }
+  <app-select
+    [data]="categoriesList"
+    [title]="'Categories'"
+    (selecedData)="filterCategory($event)"
+  ></app-select>
+  <div class="row gy-4">
+    @for (item of productsList; track item.id) {
+    <div class="col">
+      <app-product-card
+        [data]="item"
+        (clickedItem)="addClickedItemToCart($event)"
+      ></app-product-card>
     </div>
+    }
+  </div>
 </section>
